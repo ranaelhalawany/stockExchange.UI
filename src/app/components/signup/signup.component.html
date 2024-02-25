@@ -1,0 +1,51 @@
+<!-- signup.component.html -->
+<div class="signup-container" fxLayout="column" fxLayoutAlign="center center">
+    <mat-card class="signup-card">
+      <mat-card-header>
+        <mat-card-title>Signup</mat-card-title>
+      </mat-card-header>
+      <div class="row">
+
+  
+     <!-- signup.component.html -->
+    <mat-card-content>
+        <form [formGroup]="signupForm" (ngSubmit)="signup()">
+          <div class="row">
+            <mat-form-field appearance="fill">
+                <mat-label>Username</mat-label>
+                <!-- Use dot notation for 'userName' -->
+                <input matInput formControlName="username" type="text" placeholder="Enter your username" required>
+                <div class="row">
+                <mat-error *ngIf="signupForm.controls['username'].hasError('required')">Email is required</mat-error>
+              </div>
+              </mat-form-field>
+            </div>
+            <div class="row">
+              <mat-form-field appearance="fill">
+                <mat-label>Password</mat-label>
+                <!-- Use dot notation for 'password' -->
+                <input matInput formControlName="password" type="text" placeholder="Enter your password" required>
+                <div class="row">
+                <mat-error *ngIf="signupForm.controls['password'].hasError('required')">Password is required</mat-error>
+              </div>
+              </mat-form-field>
+            </div>
+
+            <div *ngIf="errorMessages.length > 0">
+              <p><strong>Signup failed due to the following reasons:</strong></p>
+              <ul>
+                <li *ngFor="let errorMessage of errorMessages">
+                  {{ errorMessage.description }}
+                </li>
+              </ul>
+            </div>
+            
+      
+        <button mat-raised-button color="primary" type="submit">signup</button>
+        </form>
+    </mat-card-content>
+  
+     </div>
+    </mat-card>
+  </div>
+  

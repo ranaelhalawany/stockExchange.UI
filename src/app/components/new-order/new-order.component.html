@@ -1,0 +1,38 @@
+<form [formGroup]="orderForm" (ngSubmit)="onSubmit!()">
+    <div class="form-group row">
+      <label for="stock_symbol">Stock Symbol:</label>
+      <select id="stock_symbol" formControlName="stock_symbol">
+        <option *ngFor="let stock of availableStocks" [value]="stock.symbol">
+          {{ stock.symbol }} - {{ stock.company }} - {{ stock.price | currency }}
+        </option>
+      </select>
+      <div *ngIf="orderForm.controls['stock_symbol'].hasError('required')">
+        <small class="text-danger">Stock Symbol is required.</small>
+      </div>
+    </div>
+  
+    <div class="form-group row">
+      <label for="quantity">Quantity:</label>
+      <input type="number" id="quantity" formControlName="quantity" />
+      <div *ngIf="orderForm.controls['quantity'].hasError('required')">
+        <small class="text-danger">Quantity is required.</small>
+      </div>
+      <div *ngIf="orderForm.controls['quantity'].hasError('min')">
+        <small class="text-danger">Quantity must be at least 1.</small>
+      </div>
+    </div>
+  
+    <div class="form-group row">
+      <label for="order_type">Order Type:</label>
+      <select id="order_type" formControlName="order_type">
+        <option value="Buy">Buy</option>
+        <option value="Sell">Sell</option>
+      </select>
+      <div *ngIf="orderForm.controls['order_type'].hasError('required')">
+        <small class="text-danger">Order Type is required.</small>
+      </div>
+    </div>
+  
+    <button type="submit">Submit Order</button>
+  </form>
+  

@@ -1,0 +1,28 @@
+<!-- app.component.html -->
+
+<div class="container mt-4">
+    <h1>{{stockSymbol}} History</h1>
+    <div class="table-responsive">
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Price</th>
+            <th scope="col">Timestamp</th>
+          
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let history of histories">
+            <th scope="row">{{ history.id }}</th>
+       
+            <td>{{ history.price | currency }}</td>
+            <td>{{ history.timestamp  }}</td>
+
+    
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  

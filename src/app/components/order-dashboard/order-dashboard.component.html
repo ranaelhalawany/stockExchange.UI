@@ -1,0 +1,33 @@
+<!-- app.component.html -->
+
+<div class="container mt-4">
+    <h1>My Orders</h1>
+    <button class="btn btn-primary" routerLink="/order/create">New Order</button>
+
+    <div class="table-responsive">
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Stock Symbol</th>
+            <th scope="col">Quantity</th>
+            <th scope="col">Order Type</th>
+            <th scope="col">Timestamp</th>
+          
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let order of orders">
+            <th scope="row">{{ order.id }}</th>
+            <td>{{ order.stock_symbol }}</td>
+            <td>{{ order.quantity }}</td>
+            <td>{{ order.order_type }}</td>
+            <td>{{ order.timestamp  }}</td>
+
+          
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  
